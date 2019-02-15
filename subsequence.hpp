@@ -92,7 +92,7 @@ sequence longest_decreasing_end_to_beginning(const sequence& A) {
     // starting with max-1
   // store in index the H values sought
 
-    size_t index = max-1, j = 0;
+    size_t index = max-1;
     for (size_t i = 0; i < n; ++i) {
       if (H[i] == index) {
           // TODO
