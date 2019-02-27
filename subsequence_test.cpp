@@ -9,7 +9,7 @@
 
 #include "rubrictest.hpp"
 
-#include "subsequence_solution.hpp"
+#include "subsequence.hpp"
 
 int main() {
 
