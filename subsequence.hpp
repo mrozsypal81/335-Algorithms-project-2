@@ -34,7 +34,7 @@ std::string sequence_to_string(const sequence& seq) {
 }
 
 // Generate a pseudo-random sequence of the given size, using the given
-// seed, where all elements are in the range [0, max_element]. 
+// seed, where all elements are in the range [0, max_element].
 // max_element must be non-negative.
 sequence random_sequence(size_t size, unsigned seed, int max_element) {
 
@@ -58,6 +58,9 @@ bool is_decreasing(const sequence& A) {
       // write the test to check if A[i-1] and A[i] are
       // in decreasing order
       // if not, you need to write what needs to be done
+      if(A[i-1] <= A[i]){
+        return false;
+      }
   }
   return true;
 }
@@ -74,10 +77,9 @@ sequence longest_decreasing_end_to_beginning(const sequence& A) {
   // the loop condition is i >= 0
   for (signed int i = n-2;  i>= 0; i--) {
     for (size_t j = i+1; j < n ; j++) {
-        // TODO
-        // write the statements that compute the value of
-        // H[i] based on conditions that involve A[i], A[j]
-        // and H[j]
+        if(A[i] > A[j] && H[j] >= H[i]){
+          H[i] = 1+H[j];
+        }
     }
   }
 
@@ -98,6 +100,8 @@ sequence longest_decreasing_end_to_beginning(const sequence& A) {
           // TODO
           // write the statements to add A[i] to the sequene R by
           // storing it into R[j], decrement index and increment j
+          R[i] = A[i];
+          index--;
       }
     }
 
