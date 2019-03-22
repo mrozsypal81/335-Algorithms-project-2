@@ -54,10 +54,6 @@ sequence random_sequence(size_t size, unsigned seed, int max_element) {
 
 bool is_decreasing(const sequence& A) {
   for (size_t i = 1; i < A.size(); ++i) {
-      // TODO
-      // write the test to check if A[i-1] and A[i] are
-      // in decreasing order
-      // if not, you need to write what needs to be done
       if(A[i-1] <= A[i]){
         return false;
       }
@@ -77,7 +73,7 @@ sequence longest_decreasing_end_to_beginning(const sequence& A) {
   // the loop condition is i >= 0
   for (signed int i = n-2;  i>= 0; i--) {
     for (size_t j = i+1; j < n ; j++) {
-        if(A[i] > A[j] && H[j] >= H[i]){
+        if(A[i] > A[j] && H[i] <= H[j]){
           H[i] = 1+H[j];
         }
     }
@@ -88,23 +84,21 @@ sequence longest_decreasing_end_to_beginning(const sequence& A) {
   auto max = *std::max_element(H.begin(), H.end()) + 1;
 
   // allocate space for the subsequence R
-  std::vector<int> R(max);
+  std::vector<int> R(max,0);
 
   // add elements to R by whose H's values are in decreasing order,
     // starting with max-1
   // store in index the H values sought
 
     size_t index = max-1;
+    int place_order = 0;
     for (size_t i = 0; i < n; ++i) {
       if (H[i] == index) {
-          // TODO
-          // write the statements to add A[i] to the sequene R by
-          // storing it into R[j], decrement index and increment j
-          R[i] = A[i];
+          R[place_order] = A[i];
+          place_order++;
           index--;
       }
     }
-
   return sequence(R.begin(), R.begin() + max);
 }
 
@@ -131,13 +125,9 @@ sequence longest_decreasing_powerset(const sequence& A) {
     for (size_t i = 1; i <= k; ++i) {
       candidate.push_back(A[stack[i]-1]);
     }
-   // TODO
-      // write the if statement to test whether candidate determines
-      // a decreasing sequence AND has a size larger than the size
-      // of the current best
-      // if both conditions are satisfied, then stored candidate in best
-
-    }
-
+      if(is_decreasing(candidate) && candidate.size() > best.size()){
+        best = candidate;
+      }
+  }
   return best;
 }
