@@ -1,0 +1,40 @@
+End to Beginning Algorithm
+
+create an array of size of inputted array of all zeros H
+
+for every element in A from i = size - 2 to size - 2 
+	for every element in A from j = i + 1 to size - 1
+		check if element at A i > A j and if H i <= H j
+			if true H i is equal to 1 plus h j
+
+for every element in array
+if x == desired value
+ if true place in new array
+
+
+return desired array of decreasing integers
+
+
+
+
+
+Powerset Algorithm
+
+
+while true
+ if( value < size )
+	keep adding values to stack
+ else 
+	take values off of stack
+
+if value is endpoint 
+	break
+
+for every element in array depending on stack size
+	add element to an array for candidate validation
+if candidate is decreasing and better than best
+	then replace best
+
+return best
+
+

@@ -24,7 +24,7 @@ void print_bar() {
 
 int main() {
 
-  const size_t n = 20;
+  const size_t n = 24;
 
   assert(n > 0);
 
